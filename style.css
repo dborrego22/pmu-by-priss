@@ -329,3 +329,31 @@ ul {
     transform: scaleX(1);
   }
 }
+
+/* ─────────────────────────────────────────
+   LOCATION BAR
+───────────────────────────────────────── */
+.location-bar {
+  background: var(--ink);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 0 24px;
+}
+
+.location-bar span {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 235, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loc-glyph {
+  color: var(--gold);
+  font-size: 8px;
+}
