@@ -696,3 +696,64 @@ ul {
   z-index: 2;
   backdrop-filter: blur(2px);
 }
+
+/* ─────────────────────────────────────────
+   BOOKING CTA
+───────────────────────────────────────── */
+.booking {
+  background: var(--ink);
+  text-align: center;
+}
+
+.booking-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.booking-headline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(36px, 8vw, 52px);
+  line-height: 1.2;
+  color: var(--cream);
+  margin-bottom: 20px;
+}
+
+.booking-headline em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.booking-body {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted-light);
+  max-width: 420px;
+  margin-bottom: 32px;
+  letter-spacing: 0.03em;
+}
+
+.booking .btn--filled {
+  margin-bottom: 16px;
+}
+
+/* Ensure booking CTA is full-width on mobile inside flex container */
+@media (max-width: 639px) {
+  .booking .btn--filled {
+    width: 100%;
+  }
+}
+
+.booking-note {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: rgba(245, 240, 235, 0.35);
+  line-height: 1.7;
+}
+
+.booking-note a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
