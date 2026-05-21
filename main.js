@@ -15,36 +15,43 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 // NAV SCROLL SHADOW
 // ─────────────────────────────────────────
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 10);
-}, { passive: true });
+if (nav) {
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+}
 
 // ─────────────────────────────────────────
 // HERO ENTRANCE SEQUENCE
 // ─────────────────────────────────────────
 function runHeroEntrance() {
+  const eyebrow = document.querySelector('.hero-eyebrow');
+  const headlineWords = document.querySelectorAll('.hero-headline span');
+  const sub = document.querySelector('.hero-sub');
+  const cta = document.querySelector('#hero .btn');
+
   if (prefersReducedMotion) {
-    document.querySelectorAll(
-      '.hero-eyebrow, .hero-headline span, .hero-sub, #hero .btn'
-    ).forEach(el => {
+    [eyebrow, sub, cta].forEach(el => {
+      if (!el) return;
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+    headlineWords.forEach(el => {
       el.style.opacity = '1';
       el.style.transform = 'none';
     });
     return;
   }
 
-  const eyebrow = document.querySelector('.hero-eyebrow');
-  const headlineWords = document.querySelectorAll('.hero-headline span');
-  const sub = document.querySelector('.hero-sub');
-  const cta = document.querySelector('#hero .btn');
-
   const ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
 
   // Eyebrow fades in at 200ms
-  setTimeout(() => {
-    eyebrow.style.transition = `opacity 400ms ${ease}`;
-    eyebrow.style.opacity = '1';
-  }, 200);
+  if (eyebrow) {
+    setTimeout(() => {
+      eyebrow.style.transition = `opacity 400ms ${ease}`;
+      eyebrow.style.opacity = '1';
+    }, 200);
+  }
 
   // Headline words stagger in starting at 500ms (80ms per word per spec)
   headlineWords.forEach((word, i) => {
@@ -57,17 +64,21 @@ function runHeroEntrance() {
 
   // Subtext after last word
   const subDelay = 500 + (headlineWords.length * 80) + 100;
-  setTimeout(() => {
-    sub.style.transition = `opacity 400ms ${ease}`;
-    sub.style.opacity = '1';
-  }, subDelay);
+  if (sub) {
+    setTimeout(() => {
+      sub.style.transition = `opacity 400ms ${ease}`;
+      sub.style.opacity = '1';
+    }, subDelay);
+  }
 
   // CTA after subtext
-  setTimeout(() => {
-    cta.style.transition = `opacity 300ms ${ease}, transform 300ms ${ease}`;
-    cta.style.opacity = '1';
-    cta.style.transform = 'scale(1)';
-  }, subDelay + 300);
+  if (cta) {
+    setTimeout(() => {
+      cta.style.transition = `opacity 300ms ${ease}, transform 300ms ${ease}`;
+      cta.style.opacity = '1';
+      cta.style.transform = 'scale(1)';
+    }, subDelay + 300);
+  }
 }
 
 // Run after fonts are loaded to avoid FOUT during animation
