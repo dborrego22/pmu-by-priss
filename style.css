@@ -139,8 +139,10 @@ ul {
   transition: color 200ms ease;
 }
 
-.nav-links a:hover {
-  color: var(--ink);
+@media (hover: hover) {
+  .nav-links a:hover {
+    color: var(--ink);
+  }
 }
 
 /* On mobile: hide text links, show only the Book button */
@@ -267,6 +269,10 @@ ul {
   position: relative;
   overflow: hidden;
   transition: color 250ms ease;
+}
+
+/* Hero CTA starts hidden — animated in by main.js */
+#hero .btn {
   opacity: 0;
   transform: scale(0.97);
 }
@@ -347,7 +353,7 @@ ul {
   font-size: 9px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(245, 240, 235, 0.5);
+  color: var(--muted-light);
   display: flex;
   align-items: center;
   gap: 8px;
