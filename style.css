@@ -446,3 +446,49 @@ ul {
     align-self: flex-start;
   }
 }
+
+/* ─────────────────────────────────────────
+   SERVICES
+───────────────────────────────────────── */
+.services {
+  background: var(--cream);
+  border-top: 1px solid rgba(26, 22, 18, 0.07);
+}
+
+.service-list {
+  margin-top: 8px;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(26, 22, 18, 0.07);
+}
+
+.service-item:first-child {
+  border-top: 1px solid rgba(26, 22, 18, 0.07);
+}
+
+.service-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--ink);
+  margin-bottom: 3px;
+  line-height: 1.2;
+}
+
+.service-desc {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.services-note {
+  margin-top: 24px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+}
