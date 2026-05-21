@@ -835,3 +835,44 @@ ul {
   padding-top: 20px;
   margin-top: 4px;
 }
+
+/* ─────────────────────────────────────────
+   MOBILE POLISH
+───────────────────────────────────────── */
+
+@media (max-width: 639px) {
+  :root {
+    --section-padding: 56px 20px;
+  }
+
+  .hero-content {
+    padding-bottom: 40px;
+  }
+
+  .about-photo {
+    max-width: 220px;
+    height: 280px;
+  }
+
+  .service-name {
+    font-size: 20px;
+  }
+
+  .ba-card {
+    height: 220px;
+  }
+
+  .booking-headline {
+    font-size: 36px;
+  }
+
+  .nav-book-btn {
+    min-height: 48px;
+    padding: 0 16px;
+  }
+}
+
+/* Smooth anchor scroll offset — account for sticky nav */
+:target {
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
