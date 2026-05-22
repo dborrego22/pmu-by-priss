@@ -883,7 +883,6 @@ ul {
 .booking {
   background: var(--ink);
   text-align: center;
-  border-bottom: 1px solid rgba(245, 240, 235, 0.06);
 }
 
 .booking-inner {
@@ -955,6 +954,9 @@ ul {
   max-height: 220px;
   opacity: 1;
   padding-top: 14px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(245, 240, 235, 0.06);
+  margin-bottom: 24px;
 }
 
 .btn--city {
