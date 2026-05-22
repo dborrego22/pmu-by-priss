@@ -226,8 +226,8 @@ ul {
 }
 
 .nav-menu {
-  position: fixed;
-  top: var(--nav-height);
+  position: absolute;
+  top: 100%;
   left: 0;
   right: 0;
   background: var(--cream);
@@ -237,7 +237,7 @@ ul {
   max-height: 0;
   overflow: hidden;
   transition: max-height 300ms ease;
-  z-index: 99;
+  z-index: 50;
 }
 
 .nav-menu.is-open {
