@@ -1166,15 +1166,9 @@ ul {
 .footer-top {
   padding: 32px 24px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 48px;
   border-bottom: 1px solid rgba(245, 240, 235, 0.06);
-}
-
-.footer-left {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
 }
 
 .footer-hours,
