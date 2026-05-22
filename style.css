@@ -110,6 +110,8 @@ ul {
   justify-content: space-between;
   padding: 0 24px;
   transition: box-shadow 200ms ease;
+  width: 100%;
+  overflow: visible;
 }
 
 #nav.scrolled {
@@ -223,8 +225,8 @@ ul {
 }
 
 .nav-menu {
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: var(--nav-height);
   left: 0;
   right: 0;
   background: var(--cream);
@@ -235,6 +237,7 @@ ul {
   overflow: hidden;
   transition: max-height 300ms ease;
   z-index: 99;
+  width: 100%;
 }
 
 .nav-menu.is-open {
