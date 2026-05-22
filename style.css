@@ -845,6 +845,10 @@ ul {
     --section-padding: 56px 20px;
   }
 
+  #hero {
+    background-position: 65% center;
+  }
+
   .hero-content {
     padding-bottom: 40px;
   }
