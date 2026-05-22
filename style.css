@@ -102,8 +102,10 @@ ul {
    NAV
 ───────────────────────────────────────── */
 #nav {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   height: var(--nav-height);
   background: var(--cream);
@@ -113,6 +115,7 @@ ul {
   justify-content: space-between;
   padding: 0 24px;
   transition: box-shadow 200ms ease;
+  box-sizing: border-box;
 }
 
 #nav.scrolled {
