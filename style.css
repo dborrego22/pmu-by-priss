@@ -1171,11 +1171,28 @@ ul {
   border-bottom: 1px solid rgba(245, 240, 235, 0.06);
 }
 
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
 .footer-hours,
 .footer-locations {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-bottom {
+  padding: 16px 24px;
+  text-align: center;
 }
 
 .footer-heading {
@@ -1194,14 +1211,6 @@ ul {
   margin: 0;
 }
 
-.footer-contact-bar {
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
 .footer-logo {
   font-family: var(--font-display);
   font-weight: 300;
@@ -1209,8 +1218,6 @@ ul {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
-  white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .footer-contact-item {
@@ -1221,7 +1228,6 @@ ul {
   font-size: 12px;
   text-decoration: none;
   transition: color 200ms ease;
-  white-space: nowrap;
 }
 
 .footer-contact-item svg {
@@ -1243,7 +1249,6 @@ ul {
 .footer-socials {
   display: flex;
   gap: 10px;
-  margin-left: auto;
 }
 
 .footer-socials a {
@@ -1255,7 +1260,6 @@ ul {
   transition: opacity 200ms ease;
   width: 16px;
   height: 16px;
-  flex-shrink: 0;
 }
 
 @media (hover: hover) {
@@ -1268,9 +1272,7 @@ ul {
   font-size: 9px;
   color: rgba(245, 240, 235, 0.35);
   letter-spacing: 0.08em;
-  margin-left: auto;
-  white-space: nowrap;
-  flex-shrink: 0;
+  margin: 0;
 }
 
 /* MOBILE (640px and below) */
@@ -1766,6 +1768,43 @@ ul {
 
   .booking-subtitle {
     font-size: 13px;
+  }
+}
+
+/* MOBILE (640px and below) */
+@media (max-width: 639px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .footer-left {
+    gap: 24px;
+  }
+
+  .footer-logo {
+    font-size: 12px;
+  }
+
+  .footer-item {
+    font-size: 11px;
+  }
+
+  .footer-contact-item {
+    font-size: 11px;
+  }
+
+  .footer-bottom {
+    padding: 12px 24px;
+  }
+
+  .footer-copy {
+    font-size: 8px;
+  }
+
+  .footer-socials {
+    gap: 8px;
   }
 }
 
