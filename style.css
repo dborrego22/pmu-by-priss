@@ -921,6 +921,9 @@ ul {
 /* Chevron inside Book Now trigger */
 .book-trigger {
   gap: 8px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(245, 240, 235, 0.06);
 }
 
 .book-trigger-label,
@@ -954,9 +957,6 @@ ul {
   max-height: 220px;
   opacity: 1;
   padding-top: 14px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(245, 240, 235, 0.06);
-  margin-bottom: 24px;
 }
 
 .btn--city {
