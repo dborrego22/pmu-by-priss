@@ -54,11 +54,12 @@ function runHeroEntrance() {
   }
 
   // Headline words stagger in starting at 500ms (80ms per word per spec)
+  // Add scale effect for sophisticated growth animation
   headlineWords.forEach((word, i) => {
     setTimeout(() => {
       word.style.transition = `opacity 600ms ${ease}, transform 600ms ${ease}`;
       word.style.opacity = '1';
-      word.style.transform = 'translateY(0)';
+      word.style.transform = 'translateY(0) scale(1)';
     }, 500 + i * 80);
   });
 
@@ -191,6 +192,41 @@ const tiktokObserver = new IntersectionObserver((entries) => {
 
 const tiktokGrid = document.querySelector('.tiktok-grid');
 if (tiktokGrid) tiktokObserver.observe(tiktokGrid);
+
+// ─────────────────────────────────────────
+// HAMBURGER MENU
+// ─────────────────────────────────────────
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navMenu = document.getElementById('navMenu');
+
+if (hamburgerBtn && navMenu) {
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('is-open');
+    hamburgerBtn.classList.toggle('is-open', isOpen);
+    hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+    navMenu.setAttribute('aria-hidden', String(!isOpen));
+  });
+
+  // Close menu when clicking on a link
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('is-open');
+      hamburgerBtn.classList.remove('is-open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+      navMenu.setAttribute('aria-hidden', 'true');
+    });
+  });
+
+  // Close menu when clicking anywhere outside
+  document.addEventListener('click', (e) => {
+    if (!hamburgerBtn.contains(e.target) && !navMenu.contains(e.target)) {
+      navMenu.classList.remove('is-open');
+      hamburgerBtn.classList.remove('is-open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+      navMenu.setAttribute('aria-hidden', 'true');
+    }
+  });
+}
 
 // ─────────────────────────────────────────
 // BOOK NOW — city SMS button toggle

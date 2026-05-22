@@ -25,12 +25,18 @@
 
   <!-- NAV -->
   <nav id="nav" aria-label="Primary navigation">
-    <a href="#" class="nav-logo">PMU by Priss</a>
-    <div class="nav-links">
+    <a href="/" class="nav-logo">PMU by Priss</a>
+    <button id="hamburgerBtn" class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    <div id="navMenu" class="nav-menu" aria-hidden="true">
+      <a href="/">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#book" class="nav-book-btn">Book</a>
+      <a href="payment-plans.html">Payment Plans</a>
+      <a href="policy.html">Policy</a>
     </div>
   </nav>
 
@@ -44,7 +50,7 @@
         <span>become <em>art</em></span>
       </h1>
       <p class="hero-sub">Precision permanent makeup for the woman who expects the best.</p>
-      <a href="#book" class="btn btn--outline">Book a Consultation</a>
+      <a href="#book" class="btn btn--outline">Reserve Your Spot</a>
     </div>
   </section>
 
@@ -79,7 +85,7 @@
             <span class="stat-label">Clients Served</span>
           </div>
           <div class="stat">
-            <span class="stat-number">2.5M+</span>
+            <span class="stat-number">3.25M+</span>
             <span class="stat-label">Social Impressions</span>
           </div>
         </div>
@@ -226,6 +232,7 @@
         <span class="book-trigger-label">Book Now</span>
         <svg class="book-trigger-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
+      <p class="booking-note">By booking, you confirm you meet our health requirements and have read our <a href="#" class="booking-policy-link">cancellation and restrictions policy</a></p>
       <div class="book-options" id="bookOptions" aria-hidden="true">
         <a href="sms:+19153172095?body=Hello%2C%20I%27m%20interested%20in%20scheduling%20an%20appointment%20in%20El%20Paso.%20What%27s%20your%20availability%3F" class="btn btn--city">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="11" height="11" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -236,7 +243,6 @@
           Book for Houston
         </a>
       </div>
-      <p class="booking-note">Available in El Paso &amp; Houston · <a href="https://www.instagram.com/pmubypriss/" target="_blank" rel="noopener noreferrer">DM on Instagram</a> to inquire</p>
     </div>
   </section>
 
