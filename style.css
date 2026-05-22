@@ -190,6 +190,7 @@ ul {
   background-position: center 20%;
   display: flex;
   align-items: flex-end;
+  border-bottom: 1px solid rgba(26, 22, 18, 0.07);
 }
 
 .hero-overlay {
