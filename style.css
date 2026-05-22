@@ -548,97 +548,40 @@ ul {
   gap: 16px;
   margin-top: 8px;
   margin-bottom: 12px;
+  align-items: center;
 }
 
 .tiktok-card {
+  width: 100%;
+  max-width: 325px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.tiktok-card iframe {
   display: block;
-  position: relative;
-  text-decoration: none;
-  color: var(--ink);
+  width: 100%;
+  height: 560px;
+  border: none;
 }
 
 @media (min-width: 640px) {
   .tiktok-grid {
     flex-direction: row;
-    gap: 12px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 16px;
   }
 
   .tiktok-card {
     flex: 1;
+    max-width: 320px;
   }
-}
 
-.tiktok-thumb {
-  position: relative;
-  width: 100%;
-  height: 280px;
-  overflow: hidden;
-  background: var(--ink);
-}
-
-@media (min-width: 640px) {
-  .tiktok-thumb {
-    height: 240px;
+  .tiktok-card iframe {
+    height: 540px;
   }
-}
-
-.tiktok-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.75;
-  transition: opacity 300ms ease, transform 300ms ease;
-}
-
-@media (hover: hover) {
-  .tiktok-card:hover .tiktok-thumb img {
-    opacity: 0.6;
-    transform: scale(1.03);
-  }
-  .tiktok-card:hover .play-icon {
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-}
-
-.tiktok-play {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.play-icon {
-  width: 44px;
-  height: 44px;
-  border: 1.5px solid rgba(250, 247, 242, 0.7);
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: transform 250ms ease;
-}
-
-.play-icon::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 54%;
-  transform: translate(-50%, -50%);
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 8px 0 8px 14px;
-  border-color: transparent transparent transparent rgba(250, 247, 242, 0.85);
-}
-
-.tiktok-caption {
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  padding: 8px 0 0;
-  line-height: 1.4;
 }
 
 .view-more-link {
