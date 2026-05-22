@@ -114,11 +114,6 @@ ul {
   justify-content: space-between;
   padding: 0 24px;
   transition: box-shadow 200ms ease;
-  width: 100vw;
-  max-width: 100%;
-  box-sizing: border-box;
-  left: 0;
-  right: 0;
 }
 
 #nav.scrolled {
