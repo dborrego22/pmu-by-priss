@@ -191,3 +191,23 @@ const tiktokObserver = new IntersectionObserver((entries) => {
 
 const tiktokGrid = document.querySelector('.tiktok-grid');
 if (tiktokGrid) tiktokObserver.observe(tiktokGrid);
+
+// ─────────────────────────────────────────
+// TIKTOK CLICK-TO-PLAY
+// ─────────────────────────────────────────
+document.querySelectorAll('.tiktok-card[data-tiktok-id]').forEach(card => {
+  const activate = () => {
+    if (card.classList.contains('is-playing')) return;
+    const id = card.dataset.tiktokId;
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.tiktok.com/embed/v2/${id}?autoplay=1`;
+    iframe.allowFullscreen = true;
+    iframe.scrolling = 'no';
+    iframe.allow = 'encrypted-media; autoplay';
+    iframe.title = card.querySelector('img')?.alt || 'TikTok video';
+    card.appendChild(iframe);
+    card.classList.add('is-playing');
+  };
+  card.addEventListener('click', activate);
+  card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') activate(); });
+});
