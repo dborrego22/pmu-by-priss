@@ -1167,7 +1167,7 @@ ul {
 
 .footer-content {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 60px;
   width: 100%;
 }
@@ -1180,6 +1180,14 @@ ul {
 
 .footer-contact {
   gap: 20px;
+}
+
+.footer-hours {
+  gap: 0;
+}
+
+.footer-locations {
+  gap: 0;
 }
 
 .footer-logo {
@@ -1325,10 +1333,25 @@ ul {
   text-align: center;
 }
 
+@media (max-width: 900px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footer-contact {
+    grid-column: 1 / -1;
+  }
+}
+
 @media (max-width: 639px) {
   .footer-content {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .footer-contact {
+    grid-column: auto;
   }
 
   .footer {
