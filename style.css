@@ -230,6 +230,7 @@ ul {
   margin-bottom: 14px;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .hero-headline span {
