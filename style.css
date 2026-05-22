@@ -1167,8 +1167,8 @@ ul {
 
 .footer-content {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
   width: 100%;
 }
 
@@ -1182,12 +1182,16 @@ ul {
   gap: 20px;
 }
 
+.footer-info {
+  gap: 32px;
+}
+
 .footer-hours {
   gap: 0;
 }
 
-.footer-locations {
-  gap: 0;
+.footer-locations-full {
+  gap: 16px;
 }
 
 .footer-logo {
@@ -1333,29 +1337,14 @@ ul {
   text-align: center;
 }
 
-@media (max-width: 900px) {
-  .footer-content {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-  }
-
-  .footer-contact {
-    grid-column: 1 / -1;
-  }
-}
-
 @media (max-width: 639px) {
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .footer-contact {
-    grid-column: auto;
-  }
-
   .footer {
-    padding: 40px 24px 32px;
+    padding: 32px 24px 28px;
+    gap: 24px;
+  }
+
+  .footer-content {
+    gap: 24px;
   }
 
   .footer-logo {
@@ -1364,18 +1353,31 @@ ul {
 
   .footer-subheading {
     font-size: 10px;
+    margin-bottom: 8px;
   }
 
   .contact-item a {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .hours-item {
-    font-size: 11px;
+    font-size: 10px;
+  }
+
+  .location-city {
+    font-size: 10px;
   }
 
   .location-address {
-    font-size: 10px;
+    font-size: 9px;
+  }
+
+  .footer-info {
+    gap: 20px;
+  }
+
+  .footer-locations-full {
+    gap: 12px;
   }
 }
 
