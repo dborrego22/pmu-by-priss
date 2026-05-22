@@ -12,6 +12,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Didact+Gothic&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <style>
+    .language-toggle {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .language-toggle button {
+      padding: 8px 20px;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1px solid rgba(26, 22, 18, 0.2);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 200ms ease;
+    }
+
+    .language-toggle button.active {
+      background: var(--ink);
+      color: var(--cream);
+      border-color: var(--ink);
+    }
+
+    .language-content {
+      display: none;
+    }
+
+    .language-content.active {
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
@@ -34,147 +68,189 @@
   <section id="page-hero" aria-label="Page header">
     <div class="page-hero-content">
       <h1 class="page-title">Policy</h1>
-      <p class="page-subtitle">Cancellation, restrictions, and health requirements</p>
+      <p class="page-subtitle">Booking Policies, Requirements & Restrictions</p>
     </div>
   </section>
 
-  <!-- POLICY CONTENT -->
-  <section class="section policy-section" aria-label="Policy">
-    <div class="section-inner policy-inner">
-      <!-- Cancellation Policy -->
-      <div class="policy-block reveal">
-        <h2 class="policy-title">Cancellation & Rescheduling Policy</h2>
-        <p>We require proper notice for any cancellations or rescheduling. The following policy applies to all appointments:</p>
-        <ul class="policy-list">
-          <li><strong>30+ Days Notice:</strong> Full refund of deposit</li>
-          <li><strong>14-29 Days Notice:</strong> 50% of deposit retained, 50% refunded</li>
-          <li><strong>Less Than 14 Days Notice:</strong> Deposit forfeited (non-refundable)</li>
-          <li><strong>No-Show:</strong> Full appointment fee due, no refund</li>
-          <li><strong>Same-Day Cancellation:</strong> Full appointment fee due</li>
+  <!-- LANGUAGE TOGGLE -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="language-toggle">
+        <button class="lang-btn active" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="es">Español</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGLISH CONTENT -->
+  <div id="en" class="language-content active">
+    <!-- BOOKING POLICIES -->
+    <section class="section policy-section">
+      <div class="section-inner">
+        <h2 class="policy-title reveal">Booking Policies</h2>
+        <div class="booking-pillars">
+          <div class="pillar reveal">
+            <h3>Deposit</h3>
+            <p>A non-refundable $100 deposit for Houston or $50 for El Paso is required to book your appointment. The deposit is deducted from your final appointment total.</p>
+          </div>
+          <div class="pillar reveal">
+            <h3>Lateness</h3>
+            <p>There is a 10 minute grace period. An additional $25 will be added to your total after 15 minutes. Your appointment will be cancelled after 20 minutes.</p>
+          </div>
+          <div class="pillar reveal">
+            <h3>Payments</h3>
+            <p>We accept cash (recommended) or cash app/Zelle. We do not accept credit cards. There is a 10% additional transaction fee if paying with card.</p>
+          </div>
+          <div class="pillar reveal">
+            <h3>Prep</h3>
+            <p>We provide brow baths & clean up prior to service. We do take videos so you can wear makeup if you like or bring it with you!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POLICY DETAILS -->
+    <section class="section policy-section">
+      <div class="section-inner">
+        <h2 class="policy-title reveal">Policy</h2>
+        <ul class="policy-list reveal">
+          <li><strong>No kids or extra guests allowed</strong> due to cross contamination and interruption of appointment.</li>
+          <li><strong>All appointments require a non-refundable & non-transferable booking fee</strong> that goes toward the total cost of service.</li>
+          <li><strong>Payments can be made in cash (recommended) or cash app/Zelle.</strong> There is an extra 10% transaction fee if paying with card. We don't accept credit cards.</li>
+          <li><strong>To reschedule we require a 1 week notice (business days).</strong></li>
+          <li><strong>If you decide to cancel the appointment, deposit will still be forfeited no matter the time frame.</strong></li>
+          <li><strong>We have a 10 minute grace period the day of your appointment.</strong> After the 10 minutes if you're not here, an extra fee of $50 will be charged. After 15 minutes the application will be cancelled, losing the deposit.</li>
+          <li><strong>No shows lose deposit automatically.</strong></li>
+          <li><strong>We do not touch any other work done by another artist.</strong> If you want to fix your brows, please let us know before booking. An extra charge of $100 will be made for previous work.</li>
+          <li><strong>All results will vary per person</strong> depending on skin, lifestyle, bone structure, medications taken and aftercare.</li>
+          <li><strong>Touchup is not included in the initial price.</strong></li>
+          <li><strong>We reserve the right to refuse service to anyone not included in the initial price.</strong></li>
+          <li><strong>We reserve the right to refuse service to anyone.</strong></li>
+          <li><strong>We are not liable for any changes to the brows</strong> once the final decision has been approved during shaping/consultation.</li>
         </ul>
       </div>
+    </section>
 
-      <hr class="policy-divider">
+    <!-- RESTRICTIONS -->
+    <section class="section policy-section">
+      <div class="section-inner">
+        <h2 class="policy-title reveal">Restrictions & Health Requirements</h2>
+        <p class="restriction-warning reveal"><strong>If any of these apply to you, you will be disqualified as a client. If you do not inform us and proceed with the appointment, we will refuse to service you on the day you come in and you will forfeit your booking fee.</strong></p>
 
-      <!-- Health Requirements & Restrictions -->
-      <div class="policy-block reveal">
-        <h2 class="policy-title">Health Requirements & Restrictions</h2>
-        <p>To ensure your safety and the best results, you must meet the following health requirements. <strong>You will not be able to proceed with your appointment if you do not meet these requirements.</strong></p>
-
-        <h3 class="policy-subtitle">Age Requirement</h3>
-        <ul class="policy-list">
-          <li><strong>Must be 18+ years of age</strong> (valid ID required at appointment)</li>
-        </ul>
-
-        <h3 class="policy-subtitle">Medical Conditions & Medications</h3>
-        <p>You are <strong>not eligible</strong> for permanent makeup if you have any of the following:</p>
-        <ul class="policy-list">
+        <ul class="restriction-list reveal">
+          <li>Must be 18+ years of age</li>
           <li>Pregnant or breastfeeding</li>
-          <li>History of keloids or abnormal scarring</li>
-          <li>Active skin conditions (acne, eczema, psoriasis, rosacea, dermatitis)</li>
-          <li>Autoimmune disorders</li>
-          <li>Bleeding disorders or taking blood thinners (Warfarin, Aspirin, Ibuprofen, Vitamin E)</li>
-          <li>Recent Botox, fillers, or laser treatments (minimum 2 weeks waiting period)</li>
-          <li>Sunburn or recent sun exposure to face</li>
-          <li>Current or recent chemotherapy</li>
-          <li>Uncontrolled diabetes</li>
-          <li>Skin sensitivity to pigments or metals</li>
-          <li>Recent facial surgery or procedures</li>
-          <li>Contagious skin conditions</li>
-          <li>Herpes simplex virus (cold sores) — must be managed before appointment</li>
-        </ul>
-
-        <h3 class="policy-subtitle">Medications That May Affect Treatment</h3>
-        <p>The following medications may interfere with the procedure or healing. <strong>Please disclose all medications at your consultation:</strong></p>
-        <ul class="policy-list">
-          <li>Blood thinners (aspirin, ibuprofen, warfarin, etc.)</li>
-          <li>Retinoids (Accutane, tretinoin, adapalene)</li>
-          <li>Immunosuppressants</li>
-          <li>Antibiotics</li>
-          <li>Vitamin supplements (especially Vitamin E)</li>
-          <li>Herbal supplements (St. John's Wort, Ginkgo Biloba, etc.)</li>
+          <li>Diabetic (we need doctor's note with clearance)</li>
+          <li>Currently or have been on antibiotics in the past 2 weeks</li>
+          <li>Allergic to alcohol, lidocaine, pigments</li>
+          <li>Any treatment, medication, or illness/disease that compromises the immune system</li>
+          <li>Transmittable blood conditions such as Hepatitis or HIV</li>
+          <li>Glaucoma and/or taking blood thinning medicine</li>
+          <li>Mitral valve disorder or high blood pressure (we need doctor's note with clearance)</li>
+          <li>Epilepsy or has experienced fainting spells or seizures</li>
+          <li>Cancer/Chemotherapy</li>
+          <li>Pacemaker or major heart problems (we need doctor's note with clearance)</li>
+          <li>Tendency towards keloids or hypertrophic scarring</li>
+          <li>Seborrheic dermatitis</li>
+          <li>Skin irritations, psoriasis, eczema, especially near the treated area (rashes, sunburn, acne, etc.)</li>
+          <li>Sick (cold, flu, etc.) if you are sick, please call to reschedule your appointment</li>
+          <li>Received Botox in the past 3 months in the upper brow area</li>
+          <li>Used Accutane in the past year</li>
+          <li>Bleached brows</li>
+          <li>Use Retin-A or retinol (must discontinue use of these products at least 4 weeks prior to procedure)</li>
+          <li>Has received laser treatments, glycolic peels, chemical peels around the treatment area within the past 3 weeks</li>
         </ul>
       </div>
+    </section>
+  </div>
 
-      <hr class="policy-divider">
+  <!-- SPANISH CONTENT -->
+  <div id="es" class="language-content">
+    <!-- BOOKING POLICIES SPANISH -->
+    <section class="section policy-section">
+      <div class="section-inner">
+        <h2 class="policy-title reveal">Pólizas de Reserva</h2>
+        <div class="booking-pillars">
+          <div class="pillar reveal">
+            <h3>Depósito</h3>
+            <p>Se requiere un depósito no reembolsable de $100 para Houston o $50 para El Paso para reservar su cita. El depósito se deduce del costo total de su cita.</p>
+          </div>
+          <div class="pillar reveal">
+            <h3>Tardanza</h3>
+            <p>Hay un período de gracia de 10 minutos. Se cobrará una tarifa adicional de $25 después de 15 minutos. Su cita será cancelada después de 20 minutos.</p>
+          </div>
+          <div class="pillar reveal">
+            <h3>Pagos</h3>
+            <p>Aceptamos efectivo (recomendado) o Cash App/Zelle. No aceptamos tarjetas de crédito. Hay una tarifa de transacción adicional del 10% si se paga con tarjeta.</p>
+          </div>
+          <div class="pillar reveal">
+            <h3>Preparación</h3>
+            <p>Proporcionamos baños de cejas y limpieza antes del servicio. Tomamos videos para que puedas usar maquillaje si lo deseas o traerlo contigo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <!-- Pre-Appointment Care -->
-      <div class="policy-block reveal">
-        <h2 class="policy-title">Pre-Appointment Care</h2>
-        <p>To achieve the best results and ensure a safe procedure, please follow these guidelines before your appointment:</p>
-        <ul class="policy-list">
-          <li>Avoid sun exposure and tanning beds for 7 days before appointment</li>
-          <li>Do not use retinoids for 1 week prior</li>
-          <li>Avoid alcohol for 24 hours before appointment</li>
-          <li>Do not take blood thinners (unless prescribed) for at least 24 hours before</li>
-          <li>Get adequate sleep the night before your appointment</li>
-          <li>Arrive with a clean face, free of makeup</li>
-          <li>Avoid caffeine on the morning of your appointment (may increase sensitivity)</li>
+    <!-- POLICY DETAILS SPANISH -->
+    <section class="section policy-section">
+      <div class="section-inner">
+        <h2 class="policy-title reveal">Póliza</h2>
+        <ul class="policy-list reveal">
+          <li><strong>No se permiten niños ni invitados adicionales</strong> debido a contaminación cruzada e interrupción de la cita.</li>
+          <li><strong>Todas las citas requieren una tarifa de reserva no reembolsable e intransferible</strong> que se destina al costo total del servicio.</li>
+          <li><strong>Los pagos se pueden realizar en efectivo (recomendado) o Cash App/Zelle.</strong> Hay una tarifa de transacción adicional del 10% si se paga con tarjeta. No aceptamos tarjetas de crédito.</li>
+          <li><strong>Para reprogramar requerimos un aviso de 1 semana (días hábiles).</strong></li>
+          <li><strong>Si decide cancelar la cita, el depósito se perderá sin importar el plazo.</strong></li>
+          <li><strong>Tenemos un período de gracia de 10 minutos el día de su cita.</strong> Después de los 10 minutos si no estás aquí, se cobrará una tarifa adicional de $50. Después de 15 minutos la aplicación se cancelará, perdiendo el depósito.</li>
+          <li><strong>No shows pierde el depósito automáticamente.</strong></li>
+          <li><strong>No retocamos ningún otro trabajo realizado por otro artista.</strong> Si desea arreglar sus cejas, háganoslo saber antes de reservar. Se realizará un cargo extra de $100 por trabajo previo.</li>
+          <li><strong>Todos los resultados variarán según la persona</strong> según la piel, el estilo de vida, la estructura ósea, los medicamentos que tome y los cuidados posteriores.</li>
+          <li><strong>El retoque no está incluido en el precio inicial.</strong></li>
+          <li><strong>Nos reservamos el derecho de rechazar el servicio a cualquier persona que no esté incluida en el precio inicial.</strong></li>
+          <li><strong>Nos reservamos el derecho de rechazar el servicio a cualquier persona.</strong></li>
+          <li><strong>No somos responsables de ningún cambio en las cejas</strong> una vez que se haya aprobado la decisión final durante el modelado/consulta.</li>
         </ul>
       </div>
+    </section>
 
-      <hr class="policy-divider">
+    <!-- RESTRICTIONS SPANISH -->
+    <section class="section policy-section">
+      <div class="section-inner">
+        <h2 class="policy-title reveal">Restricciones & Requisitos de Salud</h2>
+        <p class="restriction-warning reveal"><strong>Si alguno de estos se aplica a usted, será descalificado como cliente. Si no nos informa y continúa con la cita, le negaremos servicio el día de su entrada y perderá su tarifa de reserva.</strong></p>
 
-      <!-- Post-Appointment Care -->
-      <div class="policy-block reveal">
-        <h2 class="policy-title">Post-Appointment Care</h2>
-        <p>Proper aftercare is essential for optimal results and healing. You will receive detailed aftercare instructions at your appointment. General guidelines include:</p>
-        <ul class="policy-list">
-          <li>Keep the area clean and dry for 10 days</li>
-          <li>Avoid water, sweat, and humidity for the first 7-10 days</li>
-          <li>No swimming, saunas, or steam rooms for 10 days</li>
-          <li>Avoid direct sun exposure for 4 weeks</li>
-          <li>Do not pick, scratch, or peel the treated area</li>
-          <li>Avoid makeup on the treated area for 10 days</li>
-          <li>Do not sleep on your face for the first week</li>
-          <li>Avoid blood thinners and alcohol during healing</li>
-          <li>Do not engage in strenuous exercise for 7 days</li>
+        <ul class="restriction-list reveal">
+          <li>Debe tener más de 18 años</li>
+          <li>Embarazada o amamantando</li>
+          <li>Diabético (necesitamos una nota del médico con autorización)</li>
+          <li>Está actualmente o ha estado tomando antibióticos en las últimas 2 semanas</li>
+          <li>Alérgico al alcohol, lidocaína, pigmentos</li>
+          <li>Cualquier tratamiento, medicamento o enfermedad/enfermedad que comprometa el sistema inmunológico</li>
+          <li>Condiciones sanguíneas transmisibles como hepatitis o VIH</li>
+          <li>Glaucoma y/o tomar medicamentos anticoagulantes</li>
+          <li>Trastorno de la válvula mitral o presión arterial alta (necesitamos una nota médica con autorización)</li>
+          <li>Epilepsia o ha experimentado desmayos o convulsiones</li>
+          <li>Cáncer/Quimioterapia</li>
+          <li>Marcapasos o problemas cardíacos importantes (necesitamos una nota del médico con autorización)</li>
+          <li>Tendencia a queloides o cicatrices hipertróficas</li>
+          <li>Dermatitis seborreica</li>
+          <li>Irritaciones de la piel, psoriasis, eccemas, especialmente cerca de la zona tratada (erupciones cutáneas, quemaduras solares, acné, etc.)</li>
+          <li>Enfermo (resfriado, gripe, etc.) si está enfermo, llame para reprogramar su cita</li>
+          <li>Recibió Botox en los últimos 3 meses en el área superior de la ceja</li>
+          <li>Usó Accutane el año pasado</li>
+          <li>Cejas decoloradas</li>
+          <li>Use Retin-A o retinol (debe suspender el uso de estos productos al menos 4 semanas antes del procedimiento)</li>
+          <li>Ha recibido tratamientos con láser, exfoliaciones glicólicas, exfoliaciones químicas alrededor del área de tratamiento en las últimas 3 semanas</li>
         </ul>
       </div>
-
-      <hr class="policy-divider">
-
-      <!-- Touch-Up & Maintenance -->
-      <div class="policy-block reveal">
-        <h2 class="policy-title">Touch-Up & Maintenance</h2>
-        <ul class="policy-list">
-          <li><strong>Complimentary Touch-Up:</strong> Included within 6 weeks of initial appointment (free color/shape adjustments)</li>
-          <li><strong>Annual Touch-Up:</strong> Recommended annually to maintain color and shape</li>
-          <li><strong>Additional Touch-Ups:</strong> Available at reduced rate after complimentary period</li>
-          <li><strong>Longevity:</strong> Permanent makeup typically lasts 1-3 years depending on skin type, sun exposure, and lifestyle</li>
-        </ul>
-      </div>
-
-      <hr class="policy-divider">
-
-      <!-- Important Notes -->
-      <div class="policy-block reveal">
-        <h2 class="policy-title">Important Legal Notice</h2>
-        <p>By booking an appointment with PMU by Priss, you confirm that:</p>
-        <ul class="policy-list">
-          <li>You meet all health requirements listed above</li>
-          <li>You have disclosed all medical conditions, medications, and allergies</li>
-          <li>You understand the risks and benefits of permanent makeup</li>
-          <li>You have read and agree to this policy</li>
-          <li>You understand the cancellation policy and associated fees</li>
-        </ul>
-        <p style="margin-top: 20px;"><strong>Failure to disclose health information may result in cancellation of your appointment without refund and potential liability for any adverse effects.</strong></p>
-      </div>
-
-      <!-- Contact for Questions -->
-      <div class="policy-block reveal">
-        <h2 class="policy-title">Questions?</h2>
-        <p>If you have any questions about this policy or your eligibility for permanent makeup, please reach out before booking. We're here to help ensure you have the best and safest experience possible.</p>
-        <p style="margin-top: 16px;">Contact Priss directly through Instagram @pmubypriss or TikTok @pmubypriss</p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <!-- CTA SECTION -->
   <section class="section booking-cta-section" aria-label="Booking call to action">
     <div class="section-inner booking-cta-inner">
-      <h2 class="booking-title reveal">Ready to get started?</h2>
-      <p class="booking-subtitle reveal">Your journey to confidence begins here</p>
+      <h2 class="booking-title reveal">Ready to invest in yourself?</h2>
+      <p class="booking-subtitle reveal">Get started with a consultation</p>
       <a href="/#book" class="btn btn--outline reveal">Book Your Consultation</a>
     </div>
   </section>
@@ -193,5 +269,23 @@
   </footer>
 
   <script src="main.js"></script>
+  <script>
+    // Language toggle functionality
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+
+        // Update active button
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Update active content
+        document.querySelectorAll('.language-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        document.getElementById(lang).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>

@@ -1425,6 +1425,70 @@ ul {
   margin: 40px 0;
 }
 
+/* BOOKING PILLARS */
+.booking-pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  margin: 48px 0;
+}
+
+.pillar {
+  text-align: center;
+  padding: 24px;
+  background: var(--cream-deep);
+  border-radius: 2px;
+}
+
+.pillar h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.pillar p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* RESTRICTION LIST */
+.restriction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0;
+  padding-left: 0;
+}
+
+.restriction-list li {
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.8;
+  padding-left: 24px;
+  position: relative;
+}
+
+.restriction-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--terracotta);
+  font-weight: bold;
+}
+
+.restriction-warning {
+  background: rgba(201, 168, 124, 0.1);
+  padding: 20px;
+  border-left: 3px solid var(--gold);
+  margin: 24px 0;
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.8;
+}
+
 .policy-title {
   font-family: var(--font-display);
   font-weight: 400;
