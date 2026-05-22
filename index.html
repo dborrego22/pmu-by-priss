@@ -185,24 +185,41 @@
       <!-- Photo Gallery -->
       <p class="subsection-label reveal">Gallery</p>
       <div class="gallery-grid" aria-label="Work gallery">
-        <div class="gallery-photo reveal">
+        <button class="gallery-photo reveal" data-gallery-index="0" aria-label="View full size: Ombré powder brows result">
           <img src="assets/images/gallery/gallery-1.jpg" alt="Ombré powder brows result" loading="lazy">
-        </div>
-        <div class="gallery-photo reveal">
+        </button>
+        <button class="gallery-photo reveal" data-gallery-index="1" aria-label="View full size: Nano combination brows result">
           <img src="assets/images/gallery/gallery-2.jpg" alt="Nano combination brows result" loading="lazy">
-        </div>
-        <div class="gallery-photo reveal">
+        </button>
+        <button class="gallery-photo reveal" data-gallery-index="2" aria-label="View full size: Ombré powder brows result">
           <img src="assets/images/gallery/gallery-3.jpg" alt="Ombré powder brows result" loading="lazy">
-        </div>
-        <div class="gallery-photo reveal">
+        </button>
+        <button class="gallery-photo reveal" data-gallery-index="3" aria-label="View full size: Nano combination brows result">
           <img src="assets/images/gallery/gallery-4.jpg" alt="Nano combination brows result" loading="lazy">
-        </div>
-        <div class="gallery-photo reveal">
+        </button>
+        <button class="gallery-photo reveal" data-gallery-index="4" aria-label="View full size: Ombré powder brows result">
           <img src="assets/images/gallery/gallery-5.jpg" alt="Ombré powder brows result" loading="lazy">
-        </div>
-        <div class="gallery-photo reveal">
+        </button>
+        <button class="gallery-photo reveal" data-gallery-index="5" aria-label="View full size: Correction result">
           <img src="assets/images/gallery/gallery-6.jpg" alt="Correction result" loading="lazy">
+        </button>
+      </div>
+
+      <!-- Gallery Lightbox Modal -->
+      <div class="gallery-modal" id="galleryModal" aria-hidden="true" role="dialog" aria-modal="true">
+        <button class="gallery-modal-close" id="galleryModalClose" aria-label="Close gallery view">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <button class="gallery-modal-nav gallery-modal-prev" id="galleryModalPrev" aria-label="Previous photo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="gallery-modal-content">
+          <img id="galleryModalImg" src="" alt="">
         </div>
+        <button class="gallery-modal-nav gallery-modal-next" id="galleryModalNext" aria-label="Next photo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="gallery-modal-counter" id="galleryModalCounter"></div>
       </div>
       <a class="view-more-link" href="https://www.instagram.com/pmubypriss/" target="_blank" rel="noopener noreferrer">View more on Instagram →</a>
     </div>

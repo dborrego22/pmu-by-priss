@@ -216,6 +216,75 @@ if (bookTrigger && bookOptions) {
 }
 
 // ─────────────────────────────────────────
+// GALLERY LIGHTBOX MODAL
+// ─────────────────────────────────────────
+const galleryPhotos = document.querySelectorAll('.gallery-photo[data-gallery-index]');
+const galleryModal = document.getElementById('galleryModal');
+const galleryModalImg = document.getElementById('galleryModalImg');
+const galleryModalClose = document.getElementById('galleryModalClose');
+const galleryModalPrev = document.getElementById('galleryModalPrev');
+const galleryModalNext = document.getElementById('galleryModalNext');
+const galleryModalCounter = document.getElementById('galleryModalCounter');
+
+let currentGalleryIndex = 0;
+
+const updateGalleryModal = (index) => {
+  if (index < 0 || index >= galleryPhotos.length) return;
+  currentGalleryIndex = index;
+  const photo = galleryPhotos[index];
+  const img = photo.querySelector('img');
+  galleryModalImg.src = img.src;
+  galleryModalImg.alt = img.alt;
+  galleryModalCounter.textContent = `${index + 1} / ${galleryPhotos.length}`;
+};
+
+const openGalleryModal = (index) => {
+  updateGalleryModal(index);
+  galleryModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+};
+
+const closeGalleryModal = () => {
+  galleryModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+};
+
+if (galleryPhotos.length > 0) {
+  // Open modal on photo click
+  galleryPhotos.forEach((photo, index) => {
+    photo.addEventListener('click', () => openGalleryModal(index));
+    photo.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openGalleryModal(index);
+      }
+    });
+  });
+
+  // Modal controls
+  galleryModalClose.addEventListener('click', closeGalleryModal);
+  galleryModalPrev.addEventListener('click', () => {
+    updateGalleryModal(currentGalleryIndex - 1);
+  });
+  galleryModalNext.addEventListener('click', () => {
+    updateGalleryModal(currentGalleryIndex + 1);
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (galleryModal.getAttribute('aria-hidden') === 'true') return;
+    if (e.key === 'Escape') closeGalleryModal();
+    if (e.key === 'ArrowLeft') updateGalleryModal(currentGalleryIndex - 1);
+    if (e.key === 'ArrowRight') updateGalleryModal(currentGalleryIndex + 1);
+  });
+
+  // Close on outside click
+  galleryModal.addEventListener('click', (e) => {
+    if (e.target === galleryModal) closeGalleryModal();
+  });
+}
+
+// ─────────────────────────────────────────
 // TIKTOK CLICK-TO-PLAY
 // ─────────────────────────────────────────
 document.querySelectorAll('.tiktok-card[data-tiktok-id]').forEach(card => {
