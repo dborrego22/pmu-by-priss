@@ -742,6 +742,13 @@ ul {
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: var(--cream-deep);
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 300ms ease;
 }
 
 .gallery-photo img {
