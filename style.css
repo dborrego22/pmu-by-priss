@@ -1171,12 +1171,6 @@ ul {
   border-bottom: 1px solid rgba(245, 240, 235, 0.06);
 }
 
-.footer-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-}
-
 .footer-hours,
 .footer-locations {
   display: flex;
@@ -1285,11 +1279,6 @@ ul {
     grid-template-columns: 1fr;
     gap: 24px;
     padding: 24px;
-  }
-
-  .footer-info {
-    grid-template-columns: 1fr;
-    gap: 24px;
   }
 
   .footer-contact-bar {
