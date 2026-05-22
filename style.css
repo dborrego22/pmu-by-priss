@@ -1167,10 +1167,8 @@ ul {
 
 .footer-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  max-width: var(--max-width);
-  margin: 0 auto;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
   width: 100%;
 }
 
