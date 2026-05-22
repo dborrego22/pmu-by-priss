@@ -45,6 +45,7 @@ body {
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
+  padding-top: var(--nav-height);
 }
 
 img {
@@ -1235,7 +1236,7 @@ ul {
 ───────────────────────────────────────── */
 #page-hero {
   background: linear-gradient(135deg, var(--cream-deep) 0%, var(--cream) 100%);
-  padding: 80px 24px;
+  padding: 60px 24px 80px;
   border-bottom: 1px solid rgba(26, 22, 18, 0.07);
 }
 
@@ -1415,6 +1416,7 @@ ul {
 /* POLICY SECTION */
 .policy-section {
   background: var(--cream);
+  padding: 72px 24px;
 }
 
 .policy-inner {
@@ -1422,7 +1424,7 @@ ul {
 }
 
 .policy-block {
-  margin: 40px 0;
+  margin: 48px 0;
 }
 
 /* BOOKING PILLARS */
@@ -1430,7 +1432,7 @@ ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 32px;
-  margin: 48px 0;
+  margin: 40px 0 48px;
 }
 
 .pillar {
@@ -1494,7 +1496,7 @@ ul {
   font-weight: 400;
   font-size: 28px;
   color: var(--ink);
-  margin-bottom: 16px;
+  margin-bottom: 32px;
   line-height: 1.2;
 }
 
