@@ -1534,6 +1534,40 @@ ul {
   margin: 40px 0;
 }
 
+/* LANGUAGE TOGGLE */
+.language-toggle {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.language-toggle button {
+  padding: 8px 20px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid rgba(26, 22, 18, 0.2);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.language-toggle button.active {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+
+.language-content {
+  display: none;
+}
+
+.language-content.active {
+  display: block;
+}
+
 .booking-cta-section {
   background: var(--cream-deep);
   border-top: 1px solid rgba(26, 22, 18, 0.07);
