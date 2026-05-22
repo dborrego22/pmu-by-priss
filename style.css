@@ -67,12 +67,23 @@ ul {
 ───────────────────────────────────────── */
 .section-label {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--terracotta);
   font-weight: 700;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--terracotta);
+  flex-shrink: 0;
 }
 
 .section-label--light {
