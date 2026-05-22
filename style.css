@@ -883,6 +883,7 @@ ul {
 .booking {
   background: var(--ink);
   text-align: center;
+  border-bottom: 1px solid rgba(245, 240, 235, 0.06);
 }
 
 .booking-inner {
