@@ -1,35 +1,6 @@
 // PMU by Priss — main.js
 
 // ─────────────────────────────────────────
-// SCROLL TO TOP ON PAGE LOAD
-// ─────────────────────────────────────────
-window.scrollTo(0, 0);
-window.addEventListener('load', () => {
-  window.scrollTo(0, 0);
-});
-document.addEventListener('DOMContentLoaded', () => {
-  window.scrollTo(0, 0);
-});
-
-// ─────────────────────────────────────────
-// PREVENT HORIZONTAL SCROLLING
-// ─────────────────────────────────────────
-function preventHorizontalScroll() {
-  const maxScrollWidth = document.documentElement.scrollWidth - window.innerWidth;
-  if (window.scrollX > 0) {
-    window.scrollX = 0;
-  }
-}
-
-window.addEventListener('scroll', preventHorizontalScroll, false);
-document.addEventListener('touchmove', (e) => {
-  const touch = e.touches[0];
-  if (touch.clientX > window.innerWidth || touch.clientX < 0) {
-    e.preventDefault();
-  }
-}, { passive: false });
-
-// ─────────────────────────────────────────
 // REDUCED MOTION CHECK
 // ─────────────────────────────────────────
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
