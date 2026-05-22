@@ -1,6 +1,13 @@
 // PMU by Priss — main.js
 
 // ─────────────────────────────────────────
+// PREVENT BROWSER FROM RESTORING SCROLL POSITION
+// ─────────────────────────────────────────
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+// ─────────────────────────────────────────
 // REDUCED MOTION CHECK
 // ─────────────────────────────────────────
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
