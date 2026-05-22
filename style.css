@@ -34,7 +34,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  width: 100vw;
 }
 
 body {
@@ -239,9 +238,6 @@ ul {
   overflow: hidden;
   transition: max-height 300ms ease;
   z-index: 99;
-  width: 100vw;
-  max-width: 100%;
-  box-sizing: border-box;
 }
 
 .nav-menu.is-open {
