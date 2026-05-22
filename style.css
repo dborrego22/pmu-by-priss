@@ -76,11 +76,11 @@ ul {
 
 .subsection-label {
   font-family: var(--font-body);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--muted);
-  margin: 40px 0 16px;
+  color: var(--terracotta);
+  margin: 40px 0 20px;
 }
 
 /* ─────────────────────────────────────────
