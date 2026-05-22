@@ -193,6 +193,29 @@ const tiktokGrid = document.querySelector('.tiktok-grid');
 if (tiktokGrid) tiktokObserver.observe(tiktokGrid);
 
 // ─────────────────────────────────────────
+// BOOK NOW — city SMS button toggle
+// ─────────────────────────────────────────
+const bookTrigger = document.getElementById('bookTrigger');
+const bookOptions = document.getElementById('bookOptions');
+
+if (bookTrigger && bookOptions) {
+  bookTrigger.addEventListener('click', () => {
+    const isOpen = bookOptions.classList.toggle('is-open');
+    bookTrigger.setAttribute('aria-expanded', String(isOpen));
+    bookOptions.setAttribute('aria-hidden', String(!isOpen));
+  });
+
+  // Close when clicking anywhere outside the toggle area
+  document.addEventListener('click', (e) => {
+    if (!bookTrigger.contains(e.target) && !bookOptions.contains(e.target)) {
+      bookOptions.classList.remove('is-open');
+      bookTrigger.setAttribute('aria-expanded', 'false');
+      bookOptions.setAttribute('aria-hidden', 'true');
+    }
+  });
+}
+
+// ─────────────────────────────────────────
 // TIKTOK CLICK-TO-PLAY
 // ─────────────────────────────────────────
 document.querySelectorAll('.tiktok-card[data-tiktok-id]').forEach(card => {
