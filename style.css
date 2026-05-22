@@ -430,6 +430,47 @@ ul {
   margin-top: 8px;
 }
 
+.about-stats {
+  display: flex;
+  gap: 0;
+  margin-top: 28px;
+  border-top: 1px solid rgba(26,22,18,0.07);
+  padding-top: 24px;
+}
+
+.stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 16px;
+}
+
+.stat + .stat {
+  padding-left: 16px;
+  padding-right: 16px;
+  border-left: 1px solid rgba(26,22,18,0.07);
+}
+
+.stat:last-child {
+  padding-right: 0;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 28px;
+  color: var(--terracotta);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 /* Desktop: side-by-side */
 @media (min-width: 640px) {
   .about-inner {
