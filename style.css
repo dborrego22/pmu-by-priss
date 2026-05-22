@@ -80,7 +80,7 @@ ul {
 
 .section-label::after {
   content: '';
-  width: 24px;
+  width: 48px;
   height: 1px;
   background: var(--terracotta);
   flex-shrink: 0;
