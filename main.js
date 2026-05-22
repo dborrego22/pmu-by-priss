@@ -220,67 +220,87 @@ if (bookTrigger && bookOptions) {
 // ─────────────────────────────────────────
 const galleryPhotos = document.querySelectorAll('.gallery-photo[data-gallery-index]');
 const galleryModal = document.getElementById('galleryModal');
-const galleryModalImg = document.getElementById('galleryModalImg');
-const galleryModalClose = document.getElementById('galleryModalClose');
-const galleryModalPrev = document.getElementById('galleryModalPrev');
-const galleryModalNext = document.getElementById('galleryModalNext');
-const galleryModalCounter = document.getElementById('galleryModalCounter');
 
-let currentGalleryIndex = 0;
+if (galleryPhotos.length > 0 && galleryModal) {
+  let currentIndex = 0;
 
-const updateGalleryModal = (index) => {
-  if (index < 0 || index >= galleryPhotos.length) return;
-  currentGalleryIndex = index;
-  const photo = galleryPhotos[index];
-  const img = photo.querySelector('img');
-  galleryModalImg.src = img.src;
-  galleryModalImg.alt = img.alt;
-  galleryModalCounter.textContent = `${index + 1} / ${galleryPhotos.length}`;
-};
+  const showPhoto = (index) => {
+    if (index < 0 || index >= galleryPhotos.length) return;
+    currentIndex = index;
 
-const openGalleryModal = (index) => {
-  updateGalleryModal(index);
-  galleryModal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-};
+    const photoBtn = galleryPhotos[index];
+    const img = photoBtn.querySelector('img');
+    const modalImg = document.getElementById('galleryModalImg');
+    const counter = document.getElementById('galleryModalCounter');
 
-const closeGalleryModal = () => {
-  galleryModal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-};
+    if (modalImg && img) {
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+    }
+    if (counter) {
+      counter.textContent = `${index + 1} / ${galleryPhotos.length}`;
+    }
+  };
 
-if (galleryPhotos.length > 0) {
-  // Open modal on photo click
-  galleryPhotos.forEach((photo, index) => {
-    photo.addEventListener('click', () => openGalleryModal(index));
-    photo.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openGalleryModal(index);
-      }
+  const openModal = (index) => {
+    showPhoto(index);
+    galleryModal.classList.add('modal-open');
+    galleryModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    galleryModal.classList.remove('modal-open');
+    galleryModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  // Click to open
+  galleryPhotos.forEach((photo, i) => {
+    photo.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openModal(i);
     });
   });
 
-  // Modal controls
-  galleryModalClose.addEventListener('click', closeGalleryModal);
-  galleryModalPrev.addEventListener('click', () => {
-    updateGalleryModal(currentGalleryIndex - 1);
-  });
-  galleryModalNext.addEventListener('click', () => {
-    updateGalleryModal(currentGalleryIndex + 1);
-  });
+  // Close button
+  const closeBtn = document.getElementById('galleryModalClose');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeModal();
+    });
+  }
 
-  // Keyboard navigation
+  // Next button
+  const nextBtn = document.getElementById('galleryModalNext');
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showPhoto(currentIndex + 1);
+    });
+  }
+
+  // Prev button
+  const prevBtn = document.getElementById('galleryModalPrev');
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showPhoto(currentIndex - 1);
+    });
+  }
+
+  // Keyboard
   document.addEventListener('keydown', (e) => {
-    if (galleryModal.getAttribute('aria-hidden') === 'true') return;
-    if (e.key === 'Escape') closeGalleryModal();
-    if (e.key === 'ArrowLeft') updateGalleryModal(currentGalleryIndex - 1);
-    if (e.key === 'ArrowRight') updateGalleryModal(currentGalleryIndex + 1);
+    if (!galleryModal || galleryModal.classList.contains('modal-open') === false) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowRight') showPhoto(currentIndex + 1);
+    if (e.key === 'ArrowLeft') showPhoto(currentIndex - 1);
   });
 
-  // Close on outside click
+  // Click outside modal to close
   galleryModal.addEventListener('click', (e) => {
-    if (e.target === galleryModal) closeGalleryModal();
+    if (e.target === galleryModal) closeModal();
   });
 }
 
