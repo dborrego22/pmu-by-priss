@@ -502,9 +502,57 @@ ul {
 
 .service-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
   padding: 20px 0;
   border-bottom: 1px solid rgba(26, 22, 18, 0.07);
+}
+
+.service-info {
+  flex: 1;
+}
+
+.service-pricing {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.price-location,
+.price-tier {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 10px;
+  line-height: 1.8;
+}
+
+.price-city {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.price-amount {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--terracotta);
+  letter-spacing: 0.02em;
+}
+
+.price-inquiry {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.service-pricing--tiers {
+  border-left: 1px solid rgba(26,22,18,0.07);
+  padding-left: 16px;
 }
 
 .service-item:first-child {
