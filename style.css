@@ -1416,6 +1416,7 @@ ul {
 /* POLICY SECTION */
 .policy-section {
   background: var(--cream);
+  padding: var(--section-padding);
 }
 
 .policy-inner {
