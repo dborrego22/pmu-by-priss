@@ -1616,6 +1616,46 @@ ul {
   background: var(--terracotta);
 }
 
+.cherry-plan-section {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(26, 22, 18, 0.1);
+  position: relative;
+}
+
+.cherry-plan-section::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 24px;
+  height: 1px;
+  background: var(--terracotta);
+}
+
+.cherry-plan-section .cherry-plan-label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.cherry-plan-prices {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cherry-plan-prices .price-row {
+  padding: 4px 0;
+}
+
+.cherry-val {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--terracotta);
+  letter-spacing: 0.01em;
+}
+
 .cherry-plan-label {
   font-family: var(--font-display);
   font-style: italic;
