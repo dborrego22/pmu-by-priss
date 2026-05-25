@@ -22,21 +22,24 @@ function isTikTokApp() {
   return ua.includes('tiktok') || ua.includes('musical.ly') || ua.includes('bytedance');
 }
 
-// ONLY on TikTok: setup banner for booking failures
+// ONLY on TikTok: setup banner for SMS booking failures
 if (isTikTokApp()) {
-  document.addEventListener('DOMContentLoaded', () => {
+  function setupBannerHandlers() {
     const banner = document.getElementById('tiktokBanner');
+    const urlInput = document.getElementById('bannerUrlInput');
+    const copyBtn = document.getElementById('copyUrlBtn');
+    const dismissBtn = document.getElementById('dismissBannerBtn');
+
     if (!banner) return;
 
-    // Populate URL
-    const urlInput = document.getElementById('bannerUrlInput');
+    // Populate URL input
     if (urlInput) {
       urlInput.value = window.location.href;
     }
 
-    // Copy button
-    const copyBtn = document.getElementById('copyUrlBtn');
-    if (copyBtn) {
+    // Copy to clipboard button
+    if (copyBtn && !copyBtn.dataset.listenerAttached) {
+      copyBtn.dataset.listenerAttached = 'true';
       copyBtn.addEventListener('click', () => {
         navigator.clipboard.writeText(window.location.href).then(() => {
           copyBtn.textContent = 'Copied!';
@@ -61,22 +64,34 @@ if (isTikTokApp()) {
     }
 
     // Dismiss button
-    const dismissBtn = document.getElementById('dismissBannerBtn');
-    if (dismissBtn) {
+    if (dismissBtn && !dismissBtn.dataset.listenerAttached) {
+      dismissBtn.dataset.listenerAttached = 'true';
       dismissBtn.addEventListener('click', () => {
         banner.classList.remove('show');
       });
     }
 
-    // Show banner when SMS links are clicked (they will fail on TikTok)
+    // Attach click handlers to SMS links to show banner when clicked
     document.querySelectorAll('a[href^="sms:"]').forEach(link => {
-      link.addEventListener('click', () => {
-        setTimeout(() => {
+      if (!link.dataset.bannerListenerAttached) {
+        link.dataset.bannerListenerAttached = 'true';
+        link.addEventListener('click', (e) => {
+          // Show banner immediately when SMS link is clicked (will fail on TikTok)
           banner.classList.add('show');
-        }, 200);
-      });
+        });
+      }
     });
-  });
+  }
+
+  // Setup on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupBannerHandlers);
+  } else {
+    setupBannerHandlers();
+  }
+
+  // Re-setup periodically in case SMS links are added dynamically
+  setInterval(setupBannerHandlers, 500);
 }
 
 // ─────────────────────────────────────────
