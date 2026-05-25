@@ -67,10 +67,10 @@ function showBrowserBanner() {
   }
 }
 
-// Detect TikTok in-app browser
+// Detect TikTok in-app browser — TIKTOK ONLY
 function isTikTokApp() {
   const ua = navigator.userAgent.toLowerCase();
-  // Check for various TikTok identifiers
+  // Check for TikTok user agent identifiers
   if (ua.includes('tiktok') || ua.includes('musical.ly') || ua.includes('bytedance')) {
     return true;
   }
@@ -78,11 +78,10 @@ function isTikTokApp() {
   if (window.tiktok || window.bytedance) {
     return true;
   }
-  // Last resort: check if SMS links fail by detecting when link is clicked
   return false;
 }
 
-// Show banner if TikTok detected
+// Show banner if TikTok is detected — TIKTOK ONLY
 if (isTikTokApp()) {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', showBrowserBanner);
@@ -90,20 +89,6 @@ if (isTikTokApp()) {
     showBrowserBanner();
   }
 }
-
-// FALLBACK: Listen for SMS link clicks and show banner if they fail
-document.addEventListener('click', function(e) {
-  const link = e.target.closest('a[href^="sms:"]');
-  if (link && !document.getElementById('tiktokBanner').style.display.includes('block')) {
-    // SMS link was clicked but banner wasn't shown - likely TikTok
-    setTimeout(() => {
-      // If banner wasn't shown by detection, show it now
-      if (!document.getElementById('tiktokBanner').style.display.includes('block')) {
-        showBrowserBanner();
-      }
-    }, 100);
-  }
-}, true);
 
 // ─────────────────────────────────────────
 // DYNAMIC FOOTER YEAR

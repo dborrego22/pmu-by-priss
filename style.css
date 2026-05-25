@@ -197,14 +197,6 @@ ul {
   color: white;
 }
 
-.app-banner-instruction {
-  font-family: var(--font-body);
-  font-size: 12px;
-  line-height: 1.4;
-  margin: 0;
-  opacity: 0.95;
-}
-
 .app-banner-close {
   position: absolute;
   top: 8px;
