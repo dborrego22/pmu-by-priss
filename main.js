@@ -15,7 +15,12 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 // ─────────────────────────────────────────
 // TIKTOK IN-APP BROWSER BANNER
 // ─────────────────────────────────────────
-const isTikTokBrowser = /TikTok/.test(navigator.userAgent);
+const isTikTokBrowser = /TikTok|tiktok|Musical\.ly/.test(navigator.userAgent);
+
+// Debug logging
+if (isTikTokBrowser) {
+  console.log('TikTok browser detected');
+}
 
 if (isTikTokBrowser) {
   const banner = document.getElementById('tiktokBanner');
