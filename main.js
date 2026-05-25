@@ -19,8 +19,15 @@ const isInstagramBrowser = /Instagram/.test(navigator.userAgent);
 const isTikTokBrowser = /TikTok/.test(navigator.userAgent);
 
 if (isInstagramBrowser || isTikTokBrowser) {
-  // SMS links work natively in Instagram and TikTok browsers
-  // No additional handling needed
+  // Handle SMS links in in-app browsers
+  document.querySelectorAll('a[href^="sms:"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const smsUrl = link.getAttribute('href');
+      // Try to navigate to SMS URL
+      window.location.href = smsUrl;
+    });
+  });
 }
 
 // ─────────────────────────────────────────
