@@ -16,25 +16,25 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 // TIKTOK IN-APP BROWSER BANNER
 // ─────────────────────────────────────────
 
-// Detect if we're in TikTok in-app browser
+// Detect TikTok in-app browser
 function isTikTokApp() {
   const ua = navigator.userAgent.toLowerCase();
-  return ua.includes('tiktok') || ua.includes('musical.ly') || ua.includes('bytedance') || window.tiktok || window.bytedance;
+  return ua.includes('tiktok') || ua.includes('musical.ly') || ua.includes('bytedance');
 }
 
-// Only setup banner handlers if on TikTok
+// ONLY on TikTok: setup banner for booking failures
 if (isTikTokApp()) {
   document.addEventListener('DOMContentLoaded', () => {
     const banner = document.getElementById('tiktokBanner');
     if (!banner) return;
 
-    // Populate URL in banner
+    // Populate URL
     const urlInput = document.getElementById('bannerUrlInput');
     if (urlInput) {
       urlInput.value = window.location.href;
     }
 
-    // Copy to clipboard button
+    // Copy button
     const copyBtn = document.getElementById('copyUrlBtn');
     if (copyBtn) {
       copyBtn.addEventListener('click', () => {
@@ -46,7 +46,6 @@ if (isTikTokApp()) {
             copyBtn.classList.remove('copied');
           }, 2000);
         }).catch(() => {
-          // Fallback
           if (urlInput) {
             urlInput.select();
             document.execCommand('copy');
@@ -65,17 +64,16 @@ if (isTikTokApp()) {
     const dismissBtn = document.getElementById('dismissBannerBtn');
     if (dismissBtn) {
       dismissBtn.addEventListener('click', () => {
-        banner.style.display = 'none';
+        banner.classList.remove('show');
       });
     }
 
-    // Show banner when booking SMS links fail
+    // Show banner when SMS links are clicked (they will fail on TikTok)
     document.querySelectorAll('a[href^="sms:"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        // Wait a moment for the SMS action to fail
+      link.addEventListener('click', () => {
         setTimeout(() => {
-          banner.style.display = 'block';
-        }, 300);
+          banner.classList.add('show');
+        }, 200);
       });
     });
   });
