@@ -13,6 +13,22 @@ if ('scrollRestoration' in history) {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ─────────────────────────────────────────
+// INSTAGRAM IN-APP BROWSER FIX
+// ─────────────────────────────────────────
+const isInstagramBrowser = /Instagram/.test(navigator.userAgent);
+if (isInstagramBrowser) {
+  // Fix booking links to open in external browser
+  document.querySelectorAll('a[href^="sms:"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const smsUrl = link.getAttribute('href');
+      // Use window.open with _blank to force external browser
+      window.open(smsUrl, '_blank');
+    });
+  });
+}
+
+// ─────────────────────────────────────────
 // DYNAMIC FOOTER YEAR
 // ─────────────────────────────────────────
 const yearEl = document.querySelector('.footer-year');
