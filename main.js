@@ -13,34 +13,14 @@ if ('scrollRestoration' in history) {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ─────────────────────────────────────────
-// INSTAGRAM IN-APP BROWSER DETECTION & BANNER
+// INSTAGRAM & TIKTOK IN-APP BROWSER FIX
 // ─────────────────────────────────────────
 const isInstagramBrowser = /Instagram/.test(navigator.userAgent);
-if (isInstagramBrowser) {
-  const banner = document.getElementById('instagramBanner');
-  const openBrowserBtn = document.getElementById('openBrowserBtn');
-  const dismissBannerBtn = document.getElementById('dismissBannerBtn');
+const isTikTokBrowser = /TikTok/.test(navigator.userAgent);
 
-  // Show the banner
-  banner.style.display = 'block';
-
-  // Open in browser button
-  if (openBrowserBtn) {
-    openBrowserBtn.addEventListener('click', () => {
-      // Use intent URL to open in default browser
-      window.location.href = window.location.href;
-    });
-  }
-
-  // Dismiss button
-  if (dismissBannerBtn) {
-    dismissBannerBtn.addEventListener('click', () => {
-      banner.style.display = 'none';
-      // Reset nav position
-      const nav = document.getElementById('nav');
-      if (nav) nav.style.top = '0';
-    });
-  }
+if (isInstagramBrowser || isTikTokBrowser) {
+  // SMS links work natively in Instagram and TikTok browsers
+  // No additional handling needed
 }
 
 // ─────────────────────────────────────────
