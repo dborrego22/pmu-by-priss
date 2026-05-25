@@ -13,21 +13,34 @@ if ('scrollRestoration' in history) {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ─────────────────────────────────────────
-// INSTAGRAM IN-APP BROWSER FIX
+// INSTAGRAM IN-APP BROWSER DETECTION & BANNER
 // ─────────────────────────────────────────
 const isInstagramBrowser = /Instagram/.test(navigator.userAgent);
 if (isInstagramBrowser) {
-  // Fix booking links to work in Instagram browser
-  document.querySelectorAll('a[href^="sms:"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const smsUrl = link.getAttribute('href');
-      // Direct navigation to SMS URL - Instagram will handle it
-      setTimeout(() => {
-        window.location.href = smsUrl;
-      }, 100);
+  const banner = document.getElementById('instagramBanner');
+  const openBrowserBtn = document.getElementById('openBrowserBtn');
+  const dismissBannerBtn = document.getElementById('dismissBannerBtn');
+
+  // Show the banner
+  banner.style.display = 'block';
+
+  // Open in browser button
+  if (openBrowserBtn) {
+    openBrowserBtn.addEventListener('click', () => {
+      // Use intent URL to open in default browser
+      window.location.href = window.location.href;
     });
-  });
+  }
+
+  // Dismiss button
+  if (dismissBannerBtn) {
+    dismissBannerBtn.addEventListener('click', () => {
+      banner.style.display = 'none';
+      // Reset nav position
+      const nav = document.getElementById('nav');
+      if (nav) nav.style.top = '0';
+    });
+  }
 }
 
 // ─────────────────────────────────────────
