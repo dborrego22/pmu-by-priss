@@ -15,79 +15,70 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 // ─────────────────────────────────────────
 // TIKTOK IN-APP BROWSER BANNER
 // ─────────────────────────────────────────
-function showBrowserBanner() {
-  const banner = document.getElementById('tiktokBanner');
-  if (!banner) return;
 
-  banner.style.display = 'block';
+// Detect if we're in TikTok in-app browser
+function isTikTokApp() {
+  const ua = navigator.userAgent.toLowerCase();
+  return ua.includes('tiktok') || ua.includes('musical.ly') || ua.includes('bytedance') || window.tiktok || window.bytedance;
+}
 
-  // Populate URL input
-  const urlInput = document.getElementById('bannerUrlInput');
-  if (urlInput) {
-    urlInput.value = window.location.href;
-  }
+// Only setup banner handlers if on TikTok
+if (isTikTokApp()) {
+  document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('tiktokBanner');
+    if (!banner) return;
 
-  // Copy to clipboard
-  const copyBtn = document.getElementById('copyUrlBtn');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        // Show confirmation
-        const originalText = copyBtn.textContent;
-        copyBtn.textContent = 'Copied!';
-        copyBtn.classList.add('copied');
+    // Populate URL in banner
+    const urlInput = document.getElementById('bannerUrlInput');
+    if (urlInput) {
+      urlInput.value = window.location.href;
+    }
 
-        setTimeout(() => {
-          copyBtn.textContent = originalText;
-          copyBtn.classList.remove('copied');
-        }, 2000);
-      }).catch(() => {
-        // Fallback: select text in input for manual copy
-        if (urlInput) {
-          urlInput.select();
-          document.execCommand('copy');
+    // Copy to clipboard button
+    const copyBtn = document.getElementById('copyUrlBtn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(window.location.href).then(() => {
           copyBtn.textContent = 'Copied!';
           copyBtn.classList.add('copied');
-
           setTimeout(() => {
             copyBtn.textContent = 'Copy Link';
             copyBtn.classList.remove('copied');
           }, 2000);
-        }
+        }).catch(() => {
+          // Fallback
+          if (urlInput) {
+            urlInput.select();
+            document.execCommand('copy');
+            copyBtn.textContent = 'Copied!';
+            copyBtn.classList.add('copied');
+            setTimeout(() => {
+              copyBtn.textContent = 'Copy Link';
+              copyBtn.classList.remove('copied');
+            }, 2000);
+          }
+        });
+      });
+    }
+
+    // Dismiss button
+    const dismissBtn = document.getElementById('dismissBannerBtn');
+    if (dismissBtn) {
+      dismissBtn.addEventListener('click', () => {
+        banner.style.display = 'none';
+      });
+    }
+
+    // Show banner when booking SMS links fail
+    document.querySelectorAll('a[href^="sms:"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        // Wait a moment for the SMS action to fail
+        setTimeout(() => {
+          banner.style.display = 'block';
+        }, 300);
       });
     });
-  }
-
-  // Dismiss banner
-  const dismissBannerBtn = document.getElementById('dismissBannerBtn');
-  if (dismissBannerBtn) {
-    dismissBannerBtn.addEventListener('click', () => {
-      banner.style.display = 'none';
-    });
-  }
-}
-
-// Detect TikTok in-app browser — TIKTOK ONLY
-function isTikTokApp() {
-  const ua = navigator.userAgent.toLowerCase();
-  // Check for TikTok user agent identifiers
-  if (ua.includes('tiktok') || ua.includes('musical.ly') || ua.includes('bytedance')) {
-    return true;
-  }
-  // Check for TikTok-specific window properties
-  if (window.tiktok || window.bytedance) {
-    return true;
-  }
-  return false;
-}
-
-// Show banner if TikTok is detected — TIKTOK ONLY
-if (isTikTokApp()) {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', showBrowserBanner);
-  } else {
-    showBrowserBanner();
-  }
+  });
 }
 
 // ─────────────────────────────────────────
