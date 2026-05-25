@@ -13,7 +13,7 @@ if ('scrollRestoration' in history) {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ─────────────────────────────────────────
-// IN-APP BROWSER BANNER (Instagram/TikTok)
+// TIKTOK IN-APP BROWSER BANNER
 // ─────────────────────────────────────────
 function showBrowserBanner() {
   const banner = document.getElementById('tiktokBanner');
@@ -37,23 +37,43 @@ function showBrowserBanner() {
   }
 }
 
-// Check for in-app browsers
-const ua = navigator.userAgent.toLowerCase();
-const isMobileApp = /instagram|tiktok|fb|fbav|snapchat|twitter|weibo|qq|ucbrowser|qzone/.test(ua);
+// Detect TikTok in-app browser
+function isTikTokApp() {
+  const ua = navigator.userAgent.toLowerCase();
+  // Check for various TikTok identifiers
+  if (ua.includes('tiktok') || ua.includes('musical.ly') || ua.includes('bytedance')) {
+    return true;
+  }
+  // Check for TikTok-specific window properties
+  if (window.tiktok || window.bytedance) {
+    return true;
+  }
+  // Last resort: check if SMS links fail by detecting when link is clicked
+  return false;
+}
 
-// Also check if touch device without certain desktop indicators
-const isTouchOnly = window.matchMedia('(pointer:coarse)').matches && !window.matchMedia('(pointer:fine)').matches;
-
-// Show banner for TikTok specifically or any in-app browser on touch device
-if (isMobileApp || (isTouchOnly && !ua.includes('chrome') && !ua.includes('safari'))) {
-  document.addEventListener('DOMContentLoaded', showBrowserBanner);
-  // Also try immediately in case DOM is already ready
+// Show banner if TikTok detected
+if (isTikTokApp()) {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', showBrowserBanner);
   } else {
     showBrowserBanner();
   }
 }
+
+// FALLBACK: Listen for SMS link clicks and show banner if they fail
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('a[href^="sms:"]');
+  if (link && !document.getElementById('tiktokBanner').style.display.includes('block')) {
+    // SMS link was clicked but banner wasn't shown - likely TikTok
+    setTimeout(() => {
+      // If banner wasn't shown by detection, show it now
+      if (!document.getElementById('tiktokBanner').style.display.includes('block')) {
+        showBrowserBanner();
+      }
+    }, 100);
+  }
+}, true);
 
 // ─────────────────────────────────────────
 // DYNAMIC FOOTER YEAR
