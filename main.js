@@ -26,7 +26,8 @@ function showBrowserBanner() {
 
   if (openBrowserBtn) {
     openBrowserBtn.addEventListener('click', () => {
-      window.location.href = window.location.href;
+      // Force open in external browser
+      window.open(window.location.href, '_blank');
     });
   }
 
