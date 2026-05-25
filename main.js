@@ -13,36 +13,45 @@ if ('scrollRestoration' in history) {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ─────────────────────────────────────────
-// TIKTOK IN-APP BROWSER BANNER
+// IN-APP BROWSER BANNER (Instagram/TikTok)
 // ─────────────────────────────────────────
-const isTikTokBrowser = /TikTok|tiktok|Musical\.ly/.test(navigator.userAgent);
-
-// Debug logging
-if (isTikTokBrowser) {
-  console.log('TikTok browser detected');
-}
-
-if (isTikTokBrowser) {
+function showBrowserBanner() {
   const banner = document.getElementById('tiktokBanner');
+  if (!banner) return;
+
+  banner.style.display = 'block';
+
   const openBrowserBtn = document.getElementById('openBrowserBtn');
   const dismissBannerBtn = document.getElementById('dismissBannerBtn');
 
-  // Show the banner
-  banner.style.display = 'block';
-
-  // Open in browser button
   if (openBrowserBtn) {
     openBrowserBtn.addEventListener('click', () => {
-      // Navigate to current page in external browser
       window.location.href = window.location.href;
     });
   }
 
-  // Dismiss button
   if (dismissBannerBtn) {
     dismissBannerBtn.addEventListener('click', () => {
       banner.style.display = 'none';
     });
+  }
+}
+
+// Check for in-app browsers
+const ua = navigator.userAgent.toLowerCase();
+const isMobileApp = /instagram|tiktok|fb|fbav|snapchat|twitter|weibo|qq|ucbrowser|qzone/.test(ua);
+
+// Also check if touch device without certain desktop indicators
+const isTouchOnly = window.matchMedia('(pointer:coarse)').matches && !window.matchMedia('(pointer:fine)').matches;
+
+// Show banner for TikTok specifically or any in-app browser on touch device
+if (isMobileApp || (isTouchOnly && !ua.includes('chrome') && !ua.includes('safari'))) {
+  document.addEventListener('DOMContentLoaded', showBrowserBanner);
+  // Also try immediately in case DOM is already ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', showBrowserBanner);
+  } else {
+    showBrowserBanner();
   }
 }
 
