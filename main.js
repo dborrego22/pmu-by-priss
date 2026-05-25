@@ -26,23 +26,40 @@ function isTikTokApp() {
 if (isTikTokApp()) {
   function setupBannerHandlers() {
     const banner = document.getElementById('tiktokBanner');
-    const openBtn = document.getElementById('openBrowserBtn');
+    const urlInput = document.getElementById('bannerUrlInput');
+    const copyBtn = document.getElementById('copyUrlBtn');
     const dismissBtn = document.getElementById('dismissBannerBtn');
 
     if (!banner) return;
 
-    // Open in external browser using temporary anchor tag
-    if (openBtn && !openBtn.dataset.listenerAttached) {
-      openBtn.dataset.listenerAttached = 'true';
-      openBtn.addEventListener('click', () => {
-        // Create temporary link with target="_blank"
-        const link = document.createElement('a');
-        link.href = window.location.href;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    // Populate URL input
+    if (urlInput) {
+      urlInput.value = window.location.href;
+    }
+
+    // Copy to clipboard button
+    if (copyBtn && !copyBtn.dataset.listenerAttached) {
+      copyBtn.dataset.listenerAttached = 'true';
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          copyBtn.textContent = 'Copied!';
+          copyBtn.classList.add('copied');
+          setTimeout(() => {
+            copyBtn.textContent = 'Copy Link';
+            copyBtn.classList.remove('copied');
+          }, 2000);
+        }).catch(() => {
+          if (urlInput) {
+            urlInput.select();
+            document.execCommand('copy');
+            copyBtn.textContent = 'Copied!';
+            copyBtn.classList.add('copied');
+            setTimeout(() => {
+              copyBtn.textContent = 'Copy Link';
+              copyBtn.classList.remove('copied');
+            }, 2000);
+          }
+        });
       });
     }
 
