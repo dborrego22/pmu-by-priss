@@ -17,13 +17,15 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 // ─────────────────────────────────────────
 const isInstagramBrowser = /Instagram/.test(navigator.userAgent);
 if (isInstagramBrowser) {
-  // Fix booking links to open in external browser
+  // Fix booking links to work in Instagram browser
   document.querySelectorAll('a[href^="sms:"]').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const smsUrl = link.getAttribute('href');
-      // Use window.open with _blank to force external browser
-      window.open(smsUrl, '_blank');
+      // Direct navigation to SMS URL - Instagram will handle it
+      setTimeout(() => {
+        window.location.href = smsUrl;
+      }, 100);
     });
   });
 }
