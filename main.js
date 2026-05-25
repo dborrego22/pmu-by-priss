@@ -13,21 +13,32 @@ if ('scrollRestoration' in history) {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ─────────────────────────────────────────
-// INSTAGRAM & TIKTOK IN-APP BROWSER FIX
+// TIKTOK IN-APP BROWSER BANNER
 // ─────────────────────────────────────────
-const isInstagramBrowser = /Instagram/.test(navigator.userAgent);
 const isTikTokBrowser = /TikTok/.test(navigator.userAgent);
 
-if (isInstagramBrowser || isTikTokBrowser) {
-  // Handle SMS links in in-app browsers
-  document.querySelectorAll('a[href^="sms:"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const smsUrl = link.getAttribute('href');
-      // Try to navigate to SMS URL
-      window.location.href = smsUrl;
+if (isTikTokBrowser) {
+  const banner = document.getElementById('tiktokBanner');
+  const openBrowserBtn = document.getElementById('openBrowserBtn');
+  const dismissBannerBtn = document.getElementById('dismissBannerBtn');
+
+  // Show the banner
+  banner.style.display = 'block';
+
+  // Open in browser button
+  if (openBrowserBtn) {
+    openBrowserBtn.addEventListener('click', () => {
+      // Navigate to current page in external browser
+      window.location.href = window.location.href;
     });
-  });
+  }
+
+  // Dismiss button
+  if (dismissBannerBtn) {
+    dismissBannerBtn.addEventListener('click', () => {
+      banner.style.display = 'none';
+    });
+  }
 }
 
 // ─────────────────────────────────────────
