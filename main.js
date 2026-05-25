@@ -21,16 +21,45 @@ function showBrowserBanner() {
 
   banner.style.display = 'block';
 
-  const openBrowserBtn = document.getElementById('openBrowserBtn');
-  const dismissBannerBtn = document.getElementById('dismissBannerBtn');
+  // Populate URL input
+  const urlInput = document.getElementById('bannerUrlInput');
+  if (urlInput) {
+    urlInput.value = window.location.href;
+  }
 
-  if (openBrowserBtn) {
-    openBrowserBtn.addEventListener('click', () => {
-      // Force open in external browser
-      window.open(window.location.href, '_blank');
+  // Copy to clipboard
+  const copyBtn = document.getElementById('copyUrlBtn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        // Show confirmation
+        const originalText = copyBtn.textContent;
+        copyBtn.textContent = 'Copied!';
+        copyBtn.classList.add('copied');
+
+        setTimeout(() => {
+          copyBtn.textContent = originalText;
+          copyBtn.classList.remove('copied');
+        }, 2000);
+      }).catch(() => {
+        // Fallback: select text in input for manual copy
+        if (urlInput) {
+          urlInput.select();
+          document.execCommand('copy');
+          copyBtn.textContent = 'Copied!';
+          copyBtn.classList.add('copied');
+
+          setTimeout(() => {
+            copyBtn.textContent = 'Copy Link';
+            copyBtn.classList.remove('copied');
+          }, 2000);
+        }
+      });
     });
   }
 
+  // Dismiss banner
+  const dismissBannerBtn = document.getElementById('dismissBannerBtn');
   if (dismissBannerBtn) {
     dismissBannerBtn.addEventListener('click', () => {
       banner.style.display = 'none';
